@@ -23,7 +23,7 @@
 <div class="container">
     <div class="row text-center">
         <div class="col">
-            <img src="/storage/uploads/{{ $photo->path }}"  class=" img-fluid"/>
+            <img src="storage/uploads/{{ $photo->path }}"  class=" img-fluid"/>
             <p>{{ $photo->date }}</p>
             <iframe id="iframe" name="iframe" style="display: none;"></iframe>  <!-- ボタンを押しても画面遷移しない 参考：https://qiita.com/tokuppee15/items/3344b6e708fcbd4b89fd -->
             <form action="{{ route('photo.update',$photo->id)}}" method="POST" target="iframe">  <!-- targetの指定でボタン押しても画面遷移しない -->

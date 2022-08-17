@@ -94,7 +94,7 @@
         <div class="col" >
             @foreach($photos->sortByDesc('date') as $photo) <!-- 全ての写真から一つずつ取り出す-->
             @if( $photo->players->pluck('id')->isEmpty() )  <!-- photoでplayer_idが紐づいていないものだけ 参考:https://takuma-it.com/laravel-isempty/ -->
-                <a href="{{ route('photo.edit',$photo->id)}}"><img src="/storage/uploads/{{ $photo->path }}"  alt="IMage" class="lazyload col-lg-3 col-md-4 rounded m-1 img-fluid"/></a> <!-- 画像表示 -->              
+                <a href="{{ route('photo.edit',$photo->id)}}"><img src="storage/uploads/{{ $photo->path }}"  alt="IMage" class="lazyload col-lg-3 col-md-4 rounded m-1 img-fluid"/></a> <!-- 画像表示 -->              
                 <!-- タグ付けここから -->
                     <iframe id="iframe" name="iframe" style="display: none;"></iframe>  <!-- ボタンを押しても画面遷移しない 参考：https://qiita.com/tokuppee15/items/3344b6e708fcbd4b89fd -->
                     <form id="form" action="{{ route('photo.update',$photo->id)}}" method="POST" target="iframe">  <!-- targenの指定でボタン押しても画面遷移しない -->

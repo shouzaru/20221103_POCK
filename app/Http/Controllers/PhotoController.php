@@ -262,7 +262,9 @@ class PhotoController extends Controller
                 //画像ファイルのexifデータ取得、撮影日取得             
                 $exifdata=exif_read_data($file, 0, true);
                 $dateTimeOriginal = isset($exifdata["EXIF"]['DateTimeOriginal']) ? $exifdata["EXIF"]['DateTimeOriginal'] : "";
-                // dd($dateTimeOriginal);
+                if(empty($dateTimeOriginal)){
+                    $dateTimeOriginal = "2000-01-01 00:00:00";
+                }
 
                 $img = Image::make($file); //intervention/imageライブラリを使用する準備
                 $img->orientate();         // スマホアップ画像に対応

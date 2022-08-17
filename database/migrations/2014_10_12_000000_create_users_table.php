@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('role')->default('ReadOnly');;  //追加
+            $table->string('role')->default('NewRegistrant');;  //追加
             $table->rememberToken();
             $table->timestamps();
         });

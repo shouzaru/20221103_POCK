@@ -94,7 +94,7 @@
         <div class="col">
             @foreach($photo_sannen->sortByDesc('date') as $p)   <!--古いものから並べるにはsortBy()-->
             <!-- lazysisesで遅延ロードを実装 -->
-            <a href="{{ route('photo.edit',$p->id)}}"><img data-src="/storage/uploads/{{ $p->path }}" alt="IMage" class="lazyload col-lg-3 col-md-4 rounded m-1 img-fluid"></a>
+            <a href="{{ route('photo.edit',$p->id)}}"><img data-src="storage/uploads/{{ $p->path }}" alt="IMage" class="lazyload col-lg-3 col-md-4 rounded m-1 img-fluid"></a>
             <!-- <p>{{ $p->date }}</p> -->
             @endforeach
             

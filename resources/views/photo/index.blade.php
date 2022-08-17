@@ -82,9 +82,9 @@
         <div class="col">            
             @foreach($photos->sortByDesc('date') as $photo)
             <!-- LightBoxを実装 -->
-            <!-- <a href="/storage/uploads/{{ $photo->path }}" data-lightbox="group"><img src="/storage/uploads/{{ $photo->path }}" alt="IMage" loading="lazy" class="col-lg-3 col-md-4 rounded m-1 img-fluid"></a> -->
+            <!-- <a href="storage/uploads/{{ $photo->path }}" data-lightbox="group"><img src="storage/uploads/{{ $photo->path }}" alt="IMage" loading="lazy" class="col-lg-3 col-md-4 rounded m-1 img-fluid"></a> -->
             <!-- lazysisesで遅延ロードを実装 -->
-            <a href="{{ route('photo.edit',$photo->id)}}"><img data-src="/storage/uploads/{{ $photo->path }}" alt="IMage" class="lazyload col-lg-3 col-md-4 rounded m-1 img-fluid"></a>
+            <a href="{{ route('photo.edit',$photo->id)}}"><img data-src="storage/uploads/{{ $photo->path }}" alt="IMage" class="lazyload col-lg-3 col-md-4 rounded m-1 img-fluid"></a>
 
             
             @endforeach            
