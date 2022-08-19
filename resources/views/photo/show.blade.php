@@ -28,7 +28,7 @@
         <div class="col">            
         @foreach ($player->photos->sortByDesc('date') as $photo)
             <!-- lazysisesで遅延ロードを実装 -->
-            <a href="{{ route('photo.edit',$photo->id)}}"><img data-src="storage/uploads/{{ $photo->path }}" alt="IMage" class="lazyload col-lg-3 col-md-4 rounded m-1 img-fluid"></a>
+            <a href="{{ route('photo.edit',$photo->id)}}"><img data-src="{{asset('storage/uploads')}}{{'/'}}{{ $photo->path }}" alt="IMage" class="lazyload col-lg-3 col-md-4 rounded m-1 img-fluid"></a>
             @endforeach            
         </div>
     </div>
