@@ -98,14 +98,13 @@
             <!-- タグ付けここから -->
 
                 <form id="form" action="{{ route('photo.update',$photo->id)}}" method="POST" target="iframe"> 
-                <!-- <form id="form" action="{{ route('photo.update',$photo->id)}}" method="POST" target="">   -->
                         @csrf
                         @method('PUT')
                     <p>
                         @foreach ($players as $player)  <!-- 全選手から一つずつ取り出す -->
                             <label class="checkbox">
                                 <!-- onchange="submit(this.form)"で、チェックしたら送信 -->
-                                <input type="checkbox" name="players[]" value="{{$player->id}}" onchange="submit(this.form)&alert('タグを編集します')&location(this)" 
+                                <input type="checkbox" name="players[]" value="{{$player->id}}" onchange="submit(this.form)&alert('タグを編集します')&location(this.form)" 
                                 @if(in_array($player->id , $photo->players->pluck('id')->toArray())) checked @endif> <!-- player_idとphotoが持っているplayer_idが一致したらチェック -->
                                 {{ $player->nickname }}
                             </label>
