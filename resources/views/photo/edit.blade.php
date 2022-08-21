@@ -25,7 +25,6 @@
         <div class="col">
             <img src="{{asset('storage/uploads')}}{{'/'}}{{ $photo->path }}"  class=" img-fluid"/> <!-- asset()関数で -->
             <p>{{ $photo->date }}</p>
-            <iframe id="iframe" name="iframe" style="display: none;"></iframe>  <!-- ボタンを押しても画面遷移しない 参考：https://qiita.com/tokuppee15/items/3344b6e708fcbd4b89fd -->
             <form action="{{ route('photo.update',$photo->id)}}" method="POST" target="iframe">  <!-- targetの指定でボタン押しても画面遷移しない -->
                     @csrf
                     @method('PUT')
@@ -39,6 +38,7 @@
                     <!-- <button type="submit" class="btn btn-info" onclick='alert("タグを編集しました")'>タグを編集する</button> -->
                 </p>
             </form>
+            <iframe id="iframe" name="iframe" style="display: none;"></iframe>  <!-- ボタンを押しても画面遷移しない 参考：https://qiita.com/tokuppee15/items/3344b6e708fcbd4b89fd -->
         </div>
     </div>
 </div>
