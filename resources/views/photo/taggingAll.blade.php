@@ -97,7 +97,7 @@
         
             <!-- タグ付けここから -->
 
-                <form id="form" action="{{ route('photo.update',$photo->id)}}" method="POST" target="iframe" onsubmit="return false">  <!-- targenの指定でボタン押しても画面遷移しない -->
+                <form id="form" action="{{ route('photo.update',$photo->id)}}" method="POST" target="iframe">  <!-- targenの指定でボタン押しても画面遷移しない -->
                         @csrf
                         @method('PUT')
                     <p>
