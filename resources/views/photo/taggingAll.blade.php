@@ -97,7 +97,8 @@
         
             <!-- タグ付けここから -->
 
-                <form id="form" action="{{ route('photo.update',$photo->id)}}" method="POST" target="iframe">  <!-- targenの指定でボタン押しても画面遷移しない -->
+                <form id="form" action="{{ route('photo.update',$photo->id)}}" method="POST" target="iframe"> 
+                <!-- <form id="form" action="{{ route('photo.update',$photo->id)}}" method="POST" target="">   -->
                         @csrf
                         @method('PUT')
                     <p>
@@ -111,8 +112,10 @@
                         @endforeach
                             <!-- <button id="submit-button" type="submit" class="btn btn-info" onclick='alert("タグを編集しました")'>タグを編集する</button> -->
                     </p>
+                    <iframe id="iframe" name="iframe" style="display: none;"></iframe>    <!-- ボタンを押しても画面遷移しない 参考：https://qiita.com/tokuppee15/items/3344b6e708fcbd4b89fd -->
                 </form>
-                <iframe id="iframe" name="iframe" style="display: none;"></iframe>  <!-- ボタンを押しても画面遷移しない 参考：https://qiita.com/tokuppee15/items/3344b6e708fcbd4b89fd -->
+
+
             <!-- タグ付けここまで -->
             
         @endforeach
