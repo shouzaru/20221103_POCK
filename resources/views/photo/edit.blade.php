@@ -32,11 +32,11 @@
                 <p>
                     @foreach ($playerList as $player)
                     <label class="checkbox">
-                        <input type="checkbox" name="players[]" value="{{$player->id}}" @if(in_array($player->id,$players)) checked @endif>
+                        <input type="checkbox" name="players[]" value="{{$player->id}}" onchange="submit(this.form)&alert('タグを編集します')" @if(in_array($player->id,$players)) checked @endif>
                         {{ $player->nickname }}
                     </label>
                     @endforeach
-                    <button type="submit" class="btn btn-info" onclick='alert("タグを編集しました")'>タグを編集する</button>
+                    <!-- <button type="submit" class="btn btn-info" onclick='alert("タグを編集しました")'>タグを編集する</button> -->
                 </p>
             </form>
         </div>

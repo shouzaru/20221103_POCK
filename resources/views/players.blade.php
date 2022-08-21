@@ -130,7 +130,7 @@
                                  </td>
                                  <td>
                                 	<form action="{{ url('players/'.$player->id.'/edit') }}" method="GET"> {{ csrf_field() }}
-                                	    <button type="submit" class="btn btn-primary">更新 </button>
+                                	    <button type="submit" class="btn btn-primary">編集する </button>
                                 	</form>
                                  </td>
                              </tr>

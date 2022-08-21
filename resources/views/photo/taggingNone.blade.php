@@ -103,12 +103,12 @@
                         <p>
                             @foreach ($players as $player)  <!-- 全選手から一つずつ取り出す -->
                                 <label class="checkbox">
-                                    <input type="checkbox" name="players[]" value="{{$player->id}}" 
+                                    <input type="checkbox" name="players[]" value="{{$player->id}}" onchange="submit(this.form)&alert('タグを編集します')"
                                     @if(in_array($player->id , $photo->players->pluck('id')->toArray())) checked @endif> <!-- player_idとphotoが持っているplayer_idが一致したらチェック -->
                                     {{ $player->nickname }}
                                 </label>
                             @endforeach
-                                <button id="submit-button" type="submit" class="btn btn-info" onclick='alert("タグを編集しました")'>タグを編集する</button>
+                                <!-- <button id="submit-button" type="submit" class="btn btn-info" onclick='alert("タグを編集しました")'>タグを編集する</button> -->
                         </p>
                     </form>
                 <!-- タグ付けここまで -->
