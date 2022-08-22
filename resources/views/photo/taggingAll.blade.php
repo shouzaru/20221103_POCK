@@ -104,7 +104,7 @@
                         @foreach ($players as $player)  <!-- 全選手から一つずつ取り出す -->
                             <label class="checkbox">
                                 <!-- onchange="submit(this.form)"で、チェックしたら送信 -->
-                                <input type="checkbox" name="players[]" value="{{$player->id}}" onchange="submit(this.form)" onclick="myfunc()" id="check"
+                                <input type="checkbox" name="players[]" value="{{$player->id}}" onchange="submit(this.form)&myfunc(); return false;" 
                                 @if(in_array($player->id , $photo->players->pluck('id')->toArray())) checked @endif> <!-- player_idとphotoが持っているplayer_idが一致したらチェック -->
                                 {{ $player->nickname }}
                             </label>
@@ -136,10 +136,11 @@
 @endsection
 <script>
         function myfunc() {
-            const form = document.getElementById('check');
-            form.submit();
-            form[0].reset();
-            //任意の実行したい処理
-            return false;
+            console.log("もターン")
+            // const form = document.getElementById('check');
+            // form.submit();
+            // form[0].reset();
+            // //任意の実行したい処理
+            // return false;
         }
 </script>
