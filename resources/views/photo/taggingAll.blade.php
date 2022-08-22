@@ -97,14 +97,14 @@
         
             <iframe id="iframe" name="iframe" style="display: none;" scrolling="no" frameborder="no"></iframe>    <!-- ボタンを押しても画面遷移しない 参考：https://qiita.com/tokuppee15/items/3344b6e708fcbd4b89fd -->
             <!-- タグ付けここから -->
-                <form id="form" action="{{ route('photo.update',$photo->id)}}" method="POST" target="iframe"> 
+                <form id="form" action="{{ route('photo.update',$photo->id)}}" method="POST" target="iframe" > 
                         @csrf
                         @method('PUT')
                     <p>
                         @foreach ($players as $player)  <!-- 全選手から一つずつ取り出す -->
                             <label class="checkbox">
                                 <!-- onchange="submit(this.form)"で、チェックしたら送信 -->
-                                <input type="checkbox" name="players[]" value="{{$player->id}}" onchange="submit(this.form)&myfunc(); return false;" 
+                                <input type="checkbox" name="players[]" value="{{$player->id}}" onchange="return submit(this.form)" 
                                 @if(in_array($player->id , $photo->players->pluck('id')->toArray())) checked @endif> <!-- player_idとphotoが持っているplayer_idが一致したらチェック -->
                                 {{ $player->nickname }}
                             </label>
@@ -136,11 +136,11 @@
 @endsection
 <script>
         function myfunc() {
-            console.log("もターン")
-            // const form = document.getElementById('check');
-            // form.submit();
-            // form[0].reset();
-            // //任意の実行したい処理
-            // return false;
+            console.log("リターン")
+            const form = document.getElementById('check');
+            form.submit();
+            form[0].reset();
+            //任意の実行したい処理
+            return false;
         }
 </script>
