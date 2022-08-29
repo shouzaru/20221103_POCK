@@ -102,7 +102,7 @@
                         <p>
                             @foreach ($players as $player)  <!-- 全選手から一つずつ取り出す -->
                                 <label class="checkbox">
-                                    <input type="checkbox" name="players[]" value="{{$player->id}}" onchange="submit(this.form)&alert('タグを編集します')"
+                                    <input type="checkbox" name="players[]" value="{{$player->id}}" onchange="submit(this.form)"
                                     @if(in_array($player->id , $photo->players->pluck('id')->toArray())) checked @endif> <!-- player_idとphotoが持っているplayer_idが一致したらチェック -->
                                     {{ $player->nickname }}
                                 </label>

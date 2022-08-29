@@ -20,22 +20,22 @@
 
 @can('isAdmin') <!-- Adminでログインした人だけに許可 -->
 
-       <!-- バリデーションエラーの表示に使用-->
-         <!-- resources/views/common/errors.blade.php -->
-         @if (count($errors) > 0)
-             <!-- Form Error List -->
-             <div class="alert alert-danger">
-                 <div><strong>正しく入力してください</strong></div> 
-                 <div>
-                     <ul>
-                     @foreach ($errors->all() as $error)
-                         <li>{{ $error }}</li>
-                     @endforeach
-                     </ul>
-                 </div>
-             </div>
-         @endif
-         <!-- バリデーションエラーの表示に使用-->
+    <!-- バリデーションエラーの表示に使用-->
+        <!-- resources/views/common/errors.blade.php -->
+        @if (count($errors) > 0)
+            <!-- Form Error List -->
+            <div class="alert alert-danger">
+                <div><strong>正しく入力してください</strong></div> 
+                <div>
+                    <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                    </ul>
+                </div>
+            </div>
+        @endif
+        <!-- バリデーションエラーの表示に使用-->
 
 
 <div class="row">

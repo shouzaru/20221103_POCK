@@ -95,7 +95,8 @@
             @foreach($photos->sortByDesc('date') as $photo) <!-- 全ての写真から一つずつ取り出す-->
             <a href="{{ route('photo.edit',$photo->id)}}"><img src="storage/uploads/{{ $photo->path }}"  alt="IMage" class="lazyload col-lg-3 col-md-4 rounded m-1 img-fluid"/></a> <!-- 画像表示 -->
         
-            <iframe id="iframe" name="iframe" style="display: none;" scrolling="no" frameborder="no"></iframe>    <!-- ボタンを押しても画面遷移しない 参考：https://qiita.com/tokuppee15/items/3344b6e708fcbd4b89fd -->
+            <iframe id="iframe" name="iframe" style="display: none;" scrolling="no" frameborder="no"></iframe>    
+            <!-- ボタンを押しても画面遷移しない 参考：https://qiita.com/tokuppee15/items/3344b6e708fcbd4b89fd -->
             <!-- タグ付けここから -->
                 <form id="form" action="{{ route('photo.update',$photo->id)}}" method="POST" target="iframe" > 
                         @csrf
@@ -104,7 +105,7 @@
                         @foreach ($players as $player)  <!-- 全選手から一つずつ取り出す -->
                             <label class="checkbox">
                                 <!-- onchange="submit(this.form)"で、チェックしたら送信 -->
-                                <input type="checkbox" name="players[]" value="{{$player->id}}" onchange="return submit(this.form)" 
+                                <input type="checkbox" name="players[]" value="{{$player->id}}" onchange="submit(this.form)" 
                                 @if(in_array($player->id , $photo->players->pluck('id')->toArray())) checked @endif> <!-- player_idとphotoが持っているplayer_idが一致したらチェック -->
                                 {{ $player->nickname }}
                             </label>

@@ -31,7 +31,7 @@
                 <p>
                     @foreach ($playerList as $player)
                     <label class="checkbox">
-                        <input type="checkbox" name="players[]" value="{{$player->id}}" onchange="submit(this.form)&alert('タグを編集します')" @if(in_array($player->id,$players)) checked @endif>
+                        <input type="checkbox" name="players[]" value="{{$player->id}}" onchange="submit(this.form)" @if(in_array($player->id,$players)) checked @endif>
                         {{ $player->nickname }}
                     </label>
                     @endforeach
