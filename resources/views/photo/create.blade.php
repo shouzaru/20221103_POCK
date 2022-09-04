@@ -18,7 +18,7 @@
         </ul>
 </div>
 
-@canany(['isAdmin','isReadandTag']) <!-- いずれかの権限でログインした人だけに許可 -->
+@can('isAdmin') <!-- roleがAdminのユーザーのみ以下を表示する -->
 <div class="container">
     <div class="row">
         <div class="col">
