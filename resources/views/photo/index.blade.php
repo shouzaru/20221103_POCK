@@ -69,7 +69,7 @@
         <ul class="nav nav-tabs">
             @foreach ($players->sortBy('number')  as $player)
             <il class="nav-item">
-                <a href="{{ route('player.show',$player->id)}}" class="nav-link">{{ $player->nickname }}#{{ $player->number }}</a>
+                <a href="{{ route('player.show',$player->id)}}" class="nav-link">#{{ $player->number }}{{ $player->nickname }}</a>
             </il>
             @endforeach
         </ul>

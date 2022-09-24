@@ -231,9 +231,7 @@ class PhotoController extends Controller
     public function destroy($id)
     {
         $photo = Photo::find($id);
-     
-        // アップロード済みの写真のパスを取得
-        $path = $photo->path;
+        $path = $photo->path;  // アップロード済みの写真のパスを取得
         
         // ファイルが登録されていれば削除
         if ($path !== '') {
@@ -246,11 +244,20 @@ class PhotoController extends Controller
     }
 
 
+    // 画像ダウンロード処理
+    public function download($id){
+        $photo = Photo::find($id);
+        $path = $photo->path;  // アップロード済みの写真のパスを取得
+        $date = $photo->date;  //撮影日の情報
+        return Storage::disk('public')->download('uploads/' . $path , $date . '.jpg' ); //downloadメソッドの第二引数はダウンロードしたファイルにつけるファイル名
+    }
+
+
     // 画像アップロード処理
     public function upload(Request $request){
         //複数の画像ファイル取得
         $files = $request->file('photo');  //修正
-        // dd($files);
+        
 
         // バリデーション 
             //  $validator = $request->validate( [
@@ -278,9 +285,7 @@ class PhotoController extends Controller
                 );
                 
                 $ext = $file->guessExtension(); // ファイルの拡張子取得
-                // $fileName = Str::random(32).'.'.$ext; //ファイル名を生成
                 $fileName = $dateTimeOriginal.'.'.$ext; //ファイル名を生成。撮影日をファイル名にする。
-                // $fileName = Str::random(32).'.webp'; //.webpに拡張子を変更して容量を減らす
                 $pathFileName = "app/public/uploads/" . $fileName; //保存先のパス名
                 $save_path = storage_path($pathFileName); //保存先
                 
@@ -303,5 +308,5 @@ class PhotoController extends Controller
                     $photo->players()->attach(request()->players); //追加 photoとplayerのリレーション
             }}
             return redirect('photo');
-        }         
+        }
 }

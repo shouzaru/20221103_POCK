@@ -31,20 +31,15 @@
                         <input id="fileUploader" type="file" name="photo[]" accept='image/' enctype="multipart/form-data" multiple="multiple" required autofocus>  <!--複数ファイルのアップロード-->
                     </div>
                     <button type="submit" class="btn btn-primary">送信する</button>
+                    <!-- <button type="submit" class="btn btn-primary" onclick="UPLOAD()">送信する</button> -->
                 </form>
             </div>
+            <!-- <div>
+                <progress id="DLProgress" value="0" max="0">0%</progress>
+            </div> -->
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
 
 <hr>
 
@@ -56,3 +51,14 @@
 </div>
 @endcan
 @endsection
+
+<!-- <script>
+    function UPLOAD(){
+    let fileCount = document.getElementById("fileUploader").files.length;
+    for(i=0; i<fileCount; i++){
+    let bar = document.getElementById("DLProgress");
+    bar.max = fileCount
+    bar.value = i+1
+        }
+    }
+</script> -->

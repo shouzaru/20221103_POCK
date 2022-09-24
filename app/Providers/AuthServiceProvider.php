@@ -28,19 +28,19 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('isAdmin',function($user){
 
             return $user->role == 'Admin';
-     
-         });
+    
+        });
 
-         Gate::define('isReadandTag',function($user){
+        Gate::define('isReadandTag',function($user){
 
             return $user->role == 'ReadandTag';
-     
-         });
+    
+        });
 
-         Gate::define('isReadOnly',function($user){
+        Gate::define('isReadOnly',function($user){
 
             return $user->role == 'ReadOnly';
-     
-         });
+    
+        });
     }
 }

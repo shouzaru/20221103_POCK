@@ -29,10 +29,10 @@
                     @csrf
                     @method('PUT')
                 <p>
-                    @foreach ($playerList as $player)
+                    @foreach ($playerList->sortBy('number')  as $player)
                     <label class="checkbox">
                         <input type="checkbox" name="players[]" value="{{$player->id}}" onchange="submit(this.form)" @if(in_array($player->id,$players)) checked @endif>
-                        {{ $player->nickname }}
+                        {{ $player->number }}{{ $player->nickname }}
                     </label>
                     @endforeach
                     <!-- <button type="submit" class="btn btn-info" onclick='alert("タグを編集しました")'>タグを編集する</button> -->
@@ -50,6 +50,14 @@
     </div>
 </div>
 @endcan
+
+<div class="container text-end">
+    <div class="row">
+        <div class="col">
+            <a href="{{ route('photos.download', $photo->id) }}" class="btn btn-success" role="button">この写真をダウンロードする</a>
+        </div>
+    </div>
+</div>
 
 
 @can('isAdmin') <!-- roleがAdminのユーザーのみ以下を表示する -->

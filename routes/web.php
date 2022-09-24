@@ -44,3 +44,5 @@ Route::get('/photo.gonen', [PhotoController::class, 'gonen']);
 Route::get('/photo.rokunen', [PhotoController::class, 'rokunen']);
 Route::get('/photo.taggingAll', [PhotoController::class, 'taggingAll']);
 Route::get('/photo.taggingNone', [PhotoController::class, 'taggingNone']);
+
+Route::get('/photos/{photo}/download', [PhotoController::class, 'download'])->name('photos.download');
