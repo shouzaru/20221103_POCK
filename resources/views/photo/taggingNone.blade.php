@@ -4,7 +4,7 @@
 <!-- Bootstrapの定形コード… -->
 
 <!--タグ付はajax通信でやる。そのためのJSコード呼び出し -->
-<!-- <script src="{{mix('js/ajaxPost.js')}}"></script> -->
+<!-- <script src="{{mix('js/ajaxPost.js')}}"></script> -->  <!-- さくらサーバーだとsrcの指定はassetで -->
 <script src="{{asset('js/ajaxPost.js')}}"></script>
 
 
