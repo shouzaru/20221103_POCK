@@ -3,14 +3,11 @@
 @section('content')
 <!-- Bootstrapの定形コード… -->
 
-
+<!--タグ付はajax通信でやる。そのためのJSコード呼び出し -->
+<script src="{{mix('js/ajaxPost.js')}}"></script>
 
 <!-- Lazysizesを実装する -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js"></script>
-
-
-
-
 
 <!-- ナビゲーションメニュー -->
 <div class="container mt-2 mb-2">
@@ -26,9 +23,6 @@
             </il>
         </ul>
 </div>
-
-
-
 
 <!-- チーム全体写真（学年別） -->
 <div class="container mt-2 mb-2">
@@ -94,25 +88,22 @@
         <div class="col" >
             @foreach($photos->sortByDesc('date') as $photo) <!-- 全ての写真から一つずつ取り出す-->
             @if( $photo->players->pluck('id')->isEmpty() )  <!-- photoでplayer_idが紐づいていないものだけ 参考:https://takuma-it.com/laravel-isempty/ -->
-                <a href="{{ route('photo.edit',$photo->id)}}"><img src="storage/uploads/{{ $photo->path }}"  alt="IMage" class="lazyload col-lg-3 col-md-4 rounded m-1 img-fluid"/></a> <!-- 画像表示 -->              
+            <a href="{{ route('photo.edit',$photo->id)}}"><img src="storage/uploads/{{ $photo->path }}"  alt="IMage" class="lazyload col-lg-3 col-md-4 rounded m-1 img-fluid"/></a> <!-- 画像表示 -->              
+                
                 <!-- タグ付けここから -->
-                    <form id="form" action="{{ route('photo.update',$photo->id)}}" method="POST" target="iframe">  <!-- targetの指定でボタン押しても画面遷移しない -->
+                    <form id="form" action="{{ route('photo.update',$photo->id)}}" method="POST">
                             @csrf
                             @method('PUT')
                         <p>
                             @foreach ($players->sortBy('number')  as $player)  <!-- 全選手から一つずつ取り出す -->
                                 <label class="checkbox">
-                                    <input type="checkbox" name="players[]" value="{{$player->id}}" onchange="submit(this.form)"
+                                    <input class="PlayerCheckBox" type="checkbox" name="players[]" value="{{$player->id}}"
                                     @if(in_array($player->id , $photo->players->pluck('id')->toArray())) checked @endif> <!-- player_idとphotoが持っているplayer_idが一致したらチェック -->
                                     {{ $player->number }}{{ $player->nickname }}
                                 </label>
                             @endforeach
-                                <!-- <button id="submit-button" type="submit" class="btn btn-info" onclick='alert("タグを編集しました")'>タグを編集する</button> -->
                         </p>
                     </form>
-                    <div>
-                        <iframe id="iframe" name="iframe" style="display: none;"></iframe>  <!-- ボタンを押しても画面遷移しない 参考：https://qiita.com/tokuppee15/items/3344b6e708fcbd4b89fd -->
-                    </div>
                 <!-- タグ付けここまで -->
             @endif
         @endforeach

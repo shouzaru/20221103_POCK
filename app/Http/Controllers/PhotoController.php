@@ -216,10 +216,11 @@ class PhotoController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $photo = Photo::find($id);
         $photo->players()->sync(request()->players);
+        // return request()->players;
         return back()->with('success', '編集完了しました');
-        // return redirect()->route('photo.index')->with('success', '削除完了しました');
     }
 
     /**

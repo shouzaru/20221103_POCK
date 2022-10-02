@@ -46,3 +46,12 @@ Route::get('/photo.taggingAll', [PhotoController::class, 'taggingAll']);
 Route::get('/photo.taggingNone', [PhotoController::class, 'taggingNone']);
 
 Route::get('/photos/{photo}/download', [PhotoController::class, 'download'])->name('photos.download');
+
+Route::post('/photoplayerupdate/{id}',  [PhotoController::class, 'update']);
+
+// Route::post('/photo/{id}', [PhotoController::class, 'update']);
+
+// Route::post('/photoplayerupdate', [PhotoController::class, 'update']);  //ajaxPost.jsに記載のurlのルーティング。ajax通信のため。
+
+// Route::get('/photoplayerupdate/{id}', [PhotoController::class, 'update']);
+
