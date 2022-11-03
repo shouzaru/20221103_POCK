@@ -216,10 +216,8 @@ class PhotoController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $photo = Photo::find($id);
         $photo->players()->sync(request()->players);
-        // return request()->players;
         return back()->with('success', '編集完了しました');
     }
 
@@ -258,12 +256,6 @@ class PhotoController extends Controller
     public function upload(Request $request){
         //複数の画像ファイル取得
         $files = $request->file('photo');  //修正
-        
-
-        // バリデーション 
-            //  $validator = $request->validate( [
-            //      'photo' => 'required|file|image|max:20480', 
-            //  ]);
 
             if ( !empty($files) ){
             foreach($files as $file){

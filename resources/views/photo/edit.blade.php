@@ -3,6 +3,9 @@
 @section('content')
 <!-- Bootstrapの定形コード… -->
 
+<!--タグ付はajax通信でやる。そのためのJSコード呼び出し -->
+<script src="{{asset('js/ajaxPost.js')}}"></script>
+
 <!-- ナビゲーションメニュー -->
 <div class="container mt-2 mb-2">
         <ul class="nav nav-tabs">
@@ -31,14 +34,13 @@
                 <p>
                     @foreach ($playerList->sortBy('number')  as $player)
                     <label class="checkbox">
-                        <input type="checkbox" name="players[]" value="{{$player->id}}" onchange="submit(this.form)" @if(in_array($player->id,$players)) checked @endif>
+                        <input class="PlayerCheckBox" type="checkbox" name="players[]" value="{{$player->id}}"
+                        @if(in_array($player->id , $photo->players->pluck('id')->toArray())) checked @endif> <!-- player_idとphotoが持っているplayer_idが一致したらチェック -->
                         {{ $player->number }}{{ $player->nickname }}
                     </label>
                     @endforeach
-                    <!-- <button type="submit" class="btn btn-info" onclick='alert("タグを編集しました")'>タグを編集する</button> -->
                 </p>
             </form>
-            <iframe id="iframe" name="iframe" style="display: none;"></iframe>  <!-- ボタンを押しても画面遷移しない 参考：https://qiita.com/tokuppee15/items/3344b6e708fcbd4b89fd -->
         </div>
     </div>
 </div>
