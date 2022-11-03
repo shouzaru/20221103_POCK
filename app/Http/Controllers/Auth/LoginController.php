@@ -37,4 +37,9 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    // ログインIDをemailからユーザー名に変更するための準備 参考：https://moewe-net.com/laravel/laravel-login-by-name
+    public function username() {
+        return 'name';
+    }
 }

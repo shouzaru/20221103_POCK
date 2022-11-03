@@ -90,7 +90,7 @@
         <div class="col" >
             @foreach($photos->sortByDesc('date') as $photo) <!-- 全ての写真から一つずつ取り出す-->
             @if( $photo->players->pluck('id')->isEmpty() )  <!-- photoでplayer_idが紐づいていないものだけ 参考:https://takuma-it.com/laravel-isempty/ -->
-            <a href="{{ route('photo.edit',$photo->id)}}"><img src="storage/uploads/{{ $photo->path }}"  alt="IMage" class="lazyload col-lg-3 col-md-4 rounded m-1 img-fluid"/></a> <!-- 画像表示 -->              
+            <a href="{{ route('photo.edit',$photo->id)}}"><img src="storage/uploads/{{ $photo->path }}"  alt="IMage" class="lazyload col-lg-5 rounded m-1 img-fluid"/></a> <!-- 画像表示 -->              
                 
                 <!-- タグ付けここから -->
                     <form id="form" action="{{ route('photo.update',$photo->id)}}" method="POST">

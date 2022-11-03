@@ -22,13 +22,14 @@
 </div>
 
 
-@canany(['isAdmin','isReadandTag']) <!-- roleがAdminとReadandTagのユーザーは以下を表示する -->
 <div class="container">
     <div class="row text-center">
         <div class="col">
             <img src="{{asset('storage/uploads')}}{{'/'}}{{ $photo->path }}"  class=" img-fluid"/> <!-- asset()関数で -->
             <p>{{ $photo->date }}</p>
-            <form action="{{ route('photo.update',$photo->id)}}" method="POST" target="iframe">  <!-- targetの指定でボタン押しても画面遷移しない -->
+
+@canany(['isAdmin','isReadandTag']) <!-- roleがAdminとReadandTagのユーザーは以下を表示する -->
+            <form action="{{ route('photo.update',$photo->id)}}" method="POST">  <!-- targetの指定でボタン押しても画面遷移しない -->
                     @csrf
                     @method('PUT')
                 <p>
@@ -42,13 +43,6 @@
                 </p>
             </form>
         </div>
-    </div>
-</div>
-
-@else
-<div class="container">
-    <div class="row text-center">
-        <h1>この権限では許可されていません。ログインしてください。</h1>
     </div>
 </div>
 @endcan
