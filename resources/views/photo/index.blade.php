@@ -95,11 +95,4 @@
 
 @else
 @endcan
-
-<div class="container">
-    <div class="row text-center">
-        <h1>ログインしてください。</h1>
-    </div>
-</div>
-
 @endsection
