@@ -142,7 +142,7 @@ class PhotoController extends Controller
     public static function taggingAll()
     {
         // $photos = Photo::all();
-        $photos = Photo::orderBy('created_at')->paginate(100);
+        $photos = Photo::orderBy('date')->paginate(100);
         $players = Player::all();  //追加
         return view('photo.taggingAll', compact('players', 'photos'));  //修正
     }
@@ -150,7 +150,7 @@ class PhotoController extends Controller
     public static function taggingNone()
     {
         // $photos = Photo::all();
-        $photos = Photo::orderBy('created_at')->paginate(100);
+        $photos = Photo::orderBy('date')->paginate(100);
         $players = Player::all();  
         return view('photo.taggingNone', compact('players', 'photos')); 
     }
