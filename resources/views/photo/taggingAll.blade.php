@@ -86,6 +86,13 @@
 <div class="container">
     <div class="row text-center">
     <h3>タグ付け（全て）</h3>
+
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            {{ $photos->links()}}
+        </div>
+    </div>
+
         <div class="col" >
             @foreach($photos->sortByDesc('date') as $photo) <!-- 全ての写真から一つずつ取り出す-->
             
@@ -125,5 +132,6 @@
         {{ $photos->links()}}
     </div>
 </div>
+
 @endsection
 

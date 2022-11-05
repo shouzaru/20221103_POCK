@@ -87,6 +87,13 @@
 <div class="container">
     <div class="row text-center">
     <h3>タグ付けされていない写真</h3>
+
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            {{ $photos->links()}}
+        </div>
+    </div>
+    
         <div class="col" >
             @foreach($photos->sortByDesc('date') as $photo) <!-- 全ての写真から一つずつ取り出す-->
             @if( $photo->players->pluck('id')->isEmpty() )  <!-- photoでplayer_idが紐づいていないものだけ 参考:https://takuma-it.com/laravel-isempty/ -->
@@ -120,4 +127,9 @@
     </div>
 </div>
 @endcan
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        {{ $photos->links()}}
+    </div>
+</div>
 @endsection
