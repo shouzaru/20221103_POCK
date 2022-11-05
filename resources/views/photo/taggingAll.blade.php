@@ -119,5 +119,11 @@
     </div>
 </div>
 @endcan
+
+<div class="row">
+	<div class="col-md-4 offset-md-4">
+        {{ $photos->links()}}
+    </div>
+</div>
 @endsection
 
